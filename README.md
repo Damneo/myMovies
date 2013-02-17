@@ -76,7 +76,7 @@ myMovies.exportToTxt
 myMovies.exportToHtml
 ```
 
-## 4.- Last things you need to know
+## 4.- Last things you should know
 ##### 1.- FFmpeg & Duration movie
 > Using FFmpeg to get video duration may take some time. In order to get the duration, FFmpeg needs to open the file. If 
 you have lot of movies to list, it can be quite longer than if you wouldn't use this feature.
