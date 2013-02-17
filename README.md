@@ -71,6 +71,7 @@ myMovies = MyMovies.new()
 myMovies.exportToXml
 myMovies.exportToSql
 myMovies.exportToXls
+myMovies.exportToJson
 myMovies.exportToTxt
 myMovies.exportToHtml
 ```
