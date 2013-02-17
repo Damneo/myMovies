@@ -32,7 +32,7 @@ myMovies.exportToXls
 Yes, here are what we (optionnaly) need :
 * **FFmpeg** : This [software](http://www.ffmpeg.org/) is a video codec. It is used to get the duration of your movie file.
 Installation procedure (for Ubuntu) [here](http://doc.ubuntu-fr.org/ffmpeg)
-* **Axlsx gem** : This gem enables the XML export option. You can install this gem and find documentation on the project [page](https://github.com/randym/axlsx)
+* **Axlsx gem** : This gem enables the Excel export option. You can install this gem and find documentation on the project [page](https://github.com/randym/axlsx)
 
 ```
 $ gem install axlsx
