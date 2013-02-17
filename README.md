@@ -24,7 +24,7 @@ myMovies.exportToXls
 ### 2-1.- Configuration options
 | Name      | Description           | Type | Required  | Default |
 | --------- | ------------- | ----- | ----- | ----- |
-|path      |Absolute path where video files are going to be listed |String |true  | - |
+|path      |Absolute path to the folder where video files are going to be listed |String |false  | Current folder  |
 |exts      |Extensions files that you want to list |Array |false |All extension files |
 |duration  |Set if you want to get the duration of movies |Boolean |false |false |
 
