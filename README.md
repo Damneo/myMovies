@@ -55,7 +55,7 @@ You can export your movies list in several different formats :
 * Xml format
 * Sql format
 * Excel format
-* Json
+* Json format
 * Text format
 * Html format
 
