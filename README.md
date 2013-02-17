@@ -9,7 +9,7 @@ like xml, sql, excel, text and html
 *main.rb*
 ```ruby
 #MAIN PROGRAM
-require 'myMovies'
+require File.dirname(__FILE__) + '/myMovies'
 
 conf = {
 	'path' 	=>'/home/movies',
@@ -62,7 +62,7 @@ You can export your movies list in several different formats :
 *main.rb*
 ```ruby
 #MAIN PROGRAM
-require 'myMovies'
+require File.dirname(__FILE__) + '/myMovies'
 
 ....
 
