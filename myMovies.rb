@@ -137,7 +137,7 @@ class MyMovies
 		  percent_pascal = styles.add_style pascal_colors.merge({ :num_fmt => Axlsx::NUM_FMT_PERCENT, :border => Axlsx::STYLE_THIN_BORDER })
 		 
 		  wb.add_worksheet(:name => 'My Movies') do  |ws|
-		    ws.add_row ['Title', 'Duration', 'Size', 'Extenson'], :style => title
+		    ws.add_row ['Title', 'Duration', 'Size', 'Extension'], :style => title
 		    ws.add_row
 
 		    @videos.each do |v|
@@ -173,15 +173,3 @@ class MyMovies
 		}
 	end
 end
-
-#MAIN
-conf = {
-	'path' 	=> '/media/neo/My Passport/Films',
-	#'path' 	=> '/home/neo/Dev'
-	#'path' 	=>'/media/neo/MAXTOR/Films',
-	#'exts' 	=> ['avi','mpeg','mpg','mkv','iso','mov'],
-	'duration' => true
-}
-
-mesVideos = MyMovies.new(conf)
-mesVideos.exportToXls
