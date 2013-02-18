@@ -6,8 +6,8 @@ conf = {
 	#'path' 	=> '/home/neo/Dev'
 	#'path' 	=>'/media/neo/MAXTOR/Films',
 	#'exts' 	=> ['avi','mpeg','mpg','mkv','iso','mov'],
-	#'duration' => true
+	'duration' => true
 }
 
 myMovies = MyMovies.new(conf)
-myMovies.exportToXls
+myMovies.exportToJson

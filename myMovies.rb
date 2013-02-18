@@ -95,6 +95,15 @@ class MyMovies
 		puts 'XML file generated !'
 	end
 
+	def exportToJson
+		require 'json'
+
+		json_data 	= @videos.to_json
+		file 		= File.new("my_movies.json", "w")
+		file.write(json_data)
+		file.close
+	end
+
 	def exportToSql
 		sql = "CREATE TABLE IF NOT EXISTS `movies` (
 		  `id` int(11) NOT NULL AUTO_INCREMENT,
