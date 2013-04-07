@@ -1,4 +1,4 @@
-myMovies *******NOT FINISHED YET*******
+myMovies
 ========
 
 ## 1.- What is this ?
@@ -37,6 +37,11 @@ Installation procedure (for Ubuntu) [here](http://doc.ubuntu-fr.org/ffmpeg)
 ```
 $ gem install axlsx
 ```
+* **text-table gem** : This great gem format the text file data in a table view for the Text export option. You can install this gem and find documentation on the project [page](https://github.com/aptinio/text-table)
+
+```
+$ gem install text-table
+```
 
 ### 2-3.- Returned data
 
@@ -57,7 +62,6 @@ You can export your movies list in several different formats :
 * Excel format
 * Json format
 * Text format
-* Html format
 
 *main.rb*
 ```ruby
@@ -73,7 +77,6 @@ myMovies.exportToSql
 myMovies.exportToXls
 myMovies.exportToJson
 myMovies.exportToTxt
-myMovies.exportToHtml
 ```
 
 ## 4.- Last things you should know
