@@ -3,7 +3,7 @@ myMovies
 
 ## 1.- What is this ?
 > My Movies is a **Ruby class** that allows you to generate a list of your movies files and export it in different formats 
-like xml, sql, excel and text
+like xml, sql, json, excel and text
 
 ## 2.- How it works ?
 *main.rb*
