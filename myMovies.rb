@@ -24,7 +24,7 @@ class MyMovies
 
 				temp = {
 					'title'    => File.basename(f,(File.extname(f))),
-					'ext'      => File.extname(f).delete('.'),
+					'ext'      => File.extname(f).delete('.').upcase,
 					'duration' => (@duration) ? get_movie_duration(f) : 'NK',
 					'size'     => fileSize(File.size(f))
 				}
@@ -66,7 +66,7 @@ class MyMovies
 	  /duration: ([0-9]{2}:[0-9]{2}:[0-9]{2})/i.match(ffmpeg_output) { |m| return m[1] }
 	 
 	  # If it didn't get a match, something is wrong. Log the error
-	  return "FFMPEG ERROR"
+	  return "NK"
 	 
 	end
 
@@ -134,27 +134,25 @@ class MyMovies
 		 
 		p.workbook do |wb|
 		  # define your regular styles
-		  styles = wb.styles
-		  title = styles.add_style :sz => 15, :b => true, :u => true
-		  default = styles.add_style :border => Axlsx::STYLE_THIN_BORDER
-		  pascal_colors = { :bg_color => '567DCC', :fg_color => 'FFFF00' }
-		  pascal = styles.add_style pascal_colors.merge({ :border => Axlsx::STYLE_THIN_BORDER, :b => true })
-		  header = styles.add_style :bg_color => '00', :fg_color => 'FF', :b => true
-		  money = styles.add_style :format_code => '#,###,##0', :border => Axlsx::STYLE_THIN_BORDER
-		  money_pascal = styles.add_style pascal_colors.merge({ :format_code => '#,###,##0', :border => Axlsx::STYLE_THIN_BORDER })
-		  percent = styles.add_style :num_fmt => Axlsx::NUM_FMT_PERCENT, :border => Axlsx::STYLE_THIN_BORDER
-		  percent_pascal = styles.add_style pascal_colors.merge({ :num_fmt => Axlsx::NUM_FMT_PERCENT, :border => Axlsx::STYLE_THIN_BORDER })
+		  styles 	= wb.styles
+		  title 	= styles.add_style :sz => 18, :alignment => { :horizontal => :center, :vertical => :center }, :b => true
+		  subtitles = styles.add_style :sz => 15, :alignment => { :horizontal => :center, :vertical => :center }, :border => { :style => :medium, :color => '00000000'}
+		  normalRow = styles.add_style :sz => 10, :alignment => { :horizontal => :center }, :border => { :style => :thin, :color => '00000000'}
 		 
 		  wb.add_worksheet(:name => 'My Movies') do  |ws|
-		    ws.add_row ['Title', 'Duration', 'Size', 'Extension'], :style => title
+		  	ws.add_row ['My movies collection - ' + @videos.length.to_s + ' Movies'], :style => title, :height => 30
+		  	ws.add_row
+		    ws.add_row ['Num', 'Title', 'Duration', 'Size', 'Extension'], :style => subtitles, :widths => [6, :auto, :auto, :auto, :auto]
 		    ws.add_row
 
+		    i = 0
+
 		    @videos.each do |v|
-		  		ws.add_row [v['title'], v['duration'], v['size'], v['ext']]
+		    	i += 1
+		  		ws.add_row [i, v['title'], v['duration'], v['size'], v['ext']], style: [normalRow, normalRow, normalRow, normalRow, normalRow]
 			end
 		 
-		    # You can merge cells!
-		    #ws.merge_cells 'A1:C1'
+		    ws.merge_cells 'A1:E1'
 		 
 		  end
 		end
