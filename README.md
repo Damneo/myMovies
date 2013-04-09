@@ -12,9 +12,9 @@ like xml, sql, json, excel and text
 require File.dirname(__FILE__) + '/myMovies'
 
 conf = {
-	'path' 	=>'/home/movies',
-	'exts' 	=> ['avi','mpeg','mpg','mkv','mov'],
-	'duration' => true
+	#'path' 	=> 'the/path/to/your/movies/folder',
+	'exts' 	=> ['avi','mpeg','mpg','mkv','iso','mov'],
+	#'duration' => true
 }
 
 myMovies = MyMovies.new(conf)

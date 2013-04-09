@@ -1,24 +1,21 @@
 #encoding: utf-8
 
 class MyMovies
-
+	
 	def initialize(conf)
 
 		@dir 		= (conf['path'] == nil) ? Dir.pwd : conf['path']
 		@extensions = (conf['exts'] == nil) ? '*' 	 : conf['exts']
 		@duration 	= (conf['duration']) 	? conf['duration'] : false
-
 		@videos 	= []
 
-		@maxTitle	= ''
-
-		collectMovies(@dir)
+		collectMovies
 	end
 
-	def collectMovies(dir)
-		@tmp_videos = []
+	def collectMovies
+		tmp_videos = []
 
-		Dir[dir + '/**/*.*'].each { |f|
+		Dir[@dir + '/**/*.*'].each { |f|
 
 			if (@extensions == '*' || @extensions.include?(File.extname(f).delete('.').downcase))
 
@@ -29,13 +26,11 @@ class MyMovies
 					'size'     => fileSize(File.size(f))
 				}
 
-				@maxTitle = (temp['title'].length > @maxTitle.length) ? temp['title'] : @maxTitle
-
-				@tmp_videos.push(temp)
+				tmp_videos.push(temp)
 			end
 		}
 
-		@videos = @tmp_videos.sort_by { |k| k['title'] }
+		@videos = tmp_videos.sort_by { |k| k['title'] }
 	end
 
 	def fileSize(size)
@@ -162,21 +157,23 @@ class MyMovies
 	end
 
 	def exportToTxt
+		require 'text-table'
 
 		txtFile 	= File.new("myMovies.txt", "w")
-		tabTitles 	= ["title","ext","duration","size"]
-
 		txtFile.write("Liste des " + @videos.length.to_s + " films\n\n")
 
-		#Tab header
-		@str =  '+' + '-'*(@maxTitle.length+2) + '+'
-		@str += '-'*6 + '+'
-		@str += '-'*7 + '+'
-		@str += '-'*8 + '+\n'
-		puts @str
+		table = [
+			['Title','Duration','Size', 'Extension']
+		]
 
-		@videos.each {|v|
-			txtFile.write(v['title'] + "\n")
-		}
+		@videos.each do |v|
+			temp = [v['title'],v['duration'],v['size'],v['ext']]
+			table.push(temp)
+		end
+
+		txtFile.write(table.to_table(:first_row_is_head => true))
+		txtFile.close
+
+		puts 'Text file generated !'
 	end
 end
